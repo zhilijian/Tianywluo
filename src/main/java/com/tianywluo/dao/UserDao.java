@@ -9,6 +9,8 @@ public interface UserDao {
 
 	public void addUser(User user);
 	
+	public Long getAmount();
+	
 	public User verifyUser(String username, String password);
 
 	public boolean editUser(User user);
