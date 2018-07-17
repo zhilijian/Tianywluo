@@ -45,6 +45,11 @@ public class UserMongodb implements UserDao {
 		Update update = new Update();
 		update.set("username", user.getUsername());
 		update.set("password", MD5Util.getMD5(user.getPassword(), "utf-8"));
+		update.set("realname", user.getRealname());
+		update.set("idCard", user.getIdCard());
+		update.set("Email", user.getEmail());
+		update.set("telephone", user.getTelephone());
+		
 		mongoTemplate.updateFirst(query, update, User.class);
 		return true;
 	}
