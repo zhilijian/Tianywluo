@@ -3,7 +3,7 @@ package com.tianywluo.entity;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="youmei_user")
+@Document(collection="tianywluo_user")
 public class User {
 
 	@Indexed

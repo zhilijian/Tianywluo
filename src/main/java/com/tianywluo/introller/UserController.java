@@ -1,6 +1,7 @@
 package com.tianywluo.introller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,7 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -126,4 +128,19 @@ public class UserController {
 		return cvo;
 	}
 	
+	@RequestMapping("isusername")
+	public CommonVO ishasuser(@RequestParam(name="username") String username) {
+		CommonVO cvo = new CommonVO();
+		User user = userDao.queryUserByUsername(username);
+		if (user == null) {
+			cvo.setSuccess(true);
+			cvo.setMsg("该用户名可用！");
+			cvo.setData(null);
+		} else {
+			cvo.setMsg("该用户名已被注册。");
+			cvo.setSuccess(false);
+			cvo.setData(null);
+		}
+		return cvo;
+	}
 }
